@@ -14,29 +14,28 @@ permissions:
 
 jobs:
   build:
-# This is running on a container "ubuntu-latest" i.e. ->linux container; could be windows or mac-os
+    # This is running on a container "ubuntu-latest" i.e. ->linux container; could be windows or mac-os
     runs-on: ubuntu-latest
 
     steps:
-    # step 1: check out code from the repositiory
-    - name: Check out code
-    - uses: actions/checkout@v4
+      # step 1: check out code from the repository
+      - name: Check out code
+        uses: actions/checkout@v4
 
-    # step 2: Set up python environment
-    - name: Set up Python 3.10
-    # This is github action
-      uses: actions/setup-python@v3
-      with:
-        python-version: "3.10"
+      # step 2: Set up python environment
+      - name: Set up Python 3.10
+        # This is github action
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
 
-    # step 3: Set up python environment     
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install flake8 pytest
-        pip install -r requirement.txt
+      # step 3: Install dependencies     
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8 pytest
+          pip install -r requirements.txt
        
-    # step 4: Run tests
-    - name: Run tests
-      run: pytest
-        
+      # step 4: Run tests
+      - name: Run tests
+        run: pytest
